@@ -7,7 +7,7 @@ y0=[pi/4 0 0 0 0 0]; % condiciones iniciales
 dt=0.001;  % periodo del sistema
 k=1;  
 tmax=2;  % tiempo maximo de la simulacion
-
+La=10;
 M1=100;
 F1=300;
 F2=0;
@@ -43,4 +43,4 @@ end
 
 %plot(tt,yt(:,3)*180/pi); xlabel('tiempo, segs'); ylabel('Theta, grados'); pause  
 plot(tt,yt(:,1)*180/pi); xlabel('tiempo, segs'); ylabel('Theta, grados'); pause 
-plot(tt,yt(:,5)); xlabel('tiempo, segs'); ylabel('x(t), metros');
+plot(tt,yt(:,5)+La); xlabel('tiempo, segs'); ylabel('x(t), metros');
