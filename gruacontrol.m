@@ -7,11 +7,13 @@ y0=[pi/4 0 0 0 0 0]; % condiciones iniciales
 dt=0.001;  % periodo del sistema
 k=1;  
 tmax=2;  % tiempo maximo de la simulacion
+
 La=10;
 M1=100;
-F1=300;
-F2=0;
-F3=10;
+
+T1=300;
+T2=0;
+F3=100;
 
 % inicializacion variables de salida
 yt=zeros(fix(tmax/dt)+1,6);
@@ -19,7 +21,7 @@ tt=zeros(fix(tmax/dt)+1,1);
 
 for t1=0:dt:tmax
     % integrador numerico
-    [t,y]=ode23(@(t,y) gruader(t,y,M1,F1,F2,F3),[t1 t1+dt],y0);
+    [t,y]=ode23(@(t,y) gruader(t,y,M1,T1,T2,F3),[t1 t1+dt],y0);
     
     % toma ultimo valor del vector
     yt(k,:)=y(max(size(y)),:);
@@ -41,6 +43,18 @@ for t1=0:dt:tmax
    
 end
 
-%plot(tt,yt(:,3)*180/pi); xlabel('tiempo, segs'); ylabel('Theta, grados'); pause  
-plot(tt,yt(:,1)*180/pi); xlabel('tiempo, segs'); ylabel('Theta, grados'); pause 
-plot(tt,yt(:,5)+La); xlabel('tiempo, segs'); ylabel('x(t), metros');
+plot(tt,yt(:,1)*180/pi); xlabel('tiempo, segs'); ylabel('Theta, grados');
+hold on
+title('Angulo de elevación del brazo')
+hold off
+pause
+plot(tt,yt(:,3)*180/pi); xlabel('tiempo, segs'); ylabel('Theta, grados'); 
+hold on
+title('Angulo de azimut del brazo')
+hold off
+pause
+plot(tt,yt(:,5)); xlabel('tiempo, segs'); ylabel('r, metros');
+hold on
+title('Desplazamiento de la flecha con respecto al brazo')
+hold off
+pause

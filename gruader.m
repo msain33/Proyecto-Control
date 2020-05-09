@@ -4,8 +4,8 @@ Ma=100;    % masa flecha
 Lb=10;  %largo brazo fijo   
 Mb=100;% masa brazo fijo
 g=9.8;  % gravedad
-palfa=3000;
-pbeta=100;
+palfa=3000;%coeficiente de roce en alfa
+pbeta=100;%coeficiente de roce en beta
 pr=100;
 
 ib=Ma*(3*(y(5)^2)+3*y(5)*La+La^2)/3;
